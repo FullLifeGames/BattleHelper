@@ -20,5 +20,5 @@ If you want to include your custom sets in the damage calc, visit [my calc copy 
 
 ## Feedback
 
-As previously said, any feedback or bug report is welcomed in the [Issues](./issues) tab.   
+As previously said, any feedback or bug report is welcomed in the [Issues](https://github.com/FullLifeGames/BattleHelper/issues) tab.   
 Currently the UI for the Calc Api window is something I want to work on, so any comments on that would be appreciated.
