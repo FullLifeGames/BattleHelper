@@ -18,6 +18,20 @@ Any issue or merge request is appreciated.
 
 If you want to include your custom sets in the damage calc, visit [my calc copy site](https://fulllifegames.com/Tools/Calc/) and include your sets there!
 
+## Examples
+
+The SmogonDump in action:
+
+![SmogonDump Demonstration](images/SmogonDump.png)
+
+The ReplayScouter in action:
+
+![ReplayScouter Demonstration](images/ReplayScouter.png)
+
+The DamageCalc in action:
+
+![DamageCalc Demonstration](images/DamageCalc.png)
+
 ## Feedback
 
 As previously said, any feedback or bug report is welcomed in the [Issues](https://github.com/FullLifeGames/BattleHelper/issues) tab.   
