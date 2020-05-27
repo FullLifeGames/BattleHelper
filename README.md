@@ -14,6 +14,10 @@ Any issue or merge request is appreciated.
 5) Open Tampermonkey in your browser and click the `Add Script` tab (icon with a plus symbol)
 6) Paste the source into the script window and hit save
 
+## Usage
+
+When in a battle, click on the `Battle Options` button and then on the `Battle Helper` option.
+
 ## Custom Sets
 
 If you want to include your custom sets in the damage calc, visit [my calc copy site](https://fulllifegames.com/Tools/Calc/) and include your sets there!
