@@ -104,21 +104,51 @@
             $(this).find("span").each(function(j) {
                 var label = $(this).attr("aria-label");
                 if (label !== undefined) {
-                    teamPokemon.push(label.split(" ")[0]);
+                    label = label.replace('(active)', '');
+                    label = label.replace('(fainted)', '');
+
+                    if (label.indexOf('(') !== -1) {
+                        let tempLabel = label.substr(label.lastIndexOf('(') + 1);
+                        tempLabel = tempLabel.substr(0, tempLabel.indexOf(')'));
+
+                        if (isNaN(parseInt(tempLabel))) {
+                            label = tempLabel;
+                        } else {
+                            label = label.substr(0, label.indexOf('('));
+                        }
+                    }
+                
+                    teamPokemon.push(label.trim());
                 }
             });
         });
+
+        teamPokemon = teamPokemon.filter((entry) => entry !== "Not revealed")
         var team = teamPokemon.join(";");
 
-        $.get( "https://fulllifegames.com/Tools/ReplayScouterApi/", { name: oppName, tier: tier, mode: "showdown", team: team } )
-            .done(function( data ) {
-                $('.battleHelperScouter').html(data);
-            });
+        $.ajax({
+            url: "https://fulllifegames.com/Tools/ReplayScouterApi/",
+            data: {
+                name: oppName,
+                tier: tier,
+                mode: "showdown",
+                team: team
+            }
+        })
+        .done(function( data ) {
+            $('.battleHelperScouter').html(data);
+        });
 
-        $.get( "https://fulllifegames.com/Tools/SmogonDumpApi/", { list: tier + ".txt", team: team } )
-            .done(function( data ) {
-                $('.battleHelperDump').html(data);
-            });
+        $.ajax({
+            url: "https://fulllifegames.com/Tools/SmogonDumpApi/",
+            data: {
+                list: tier + ".txt",
+                team: team
+            }
+        })
+        .done(function (data) {
+            $('.battleHelperDump').html(data);
+        });
 
         setTimeout(handleDamageCalcs, 100);
     }
