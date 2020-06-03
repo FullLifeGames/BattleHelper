@@ -11,7 +11,7 @@
 // @include      https://*.psim.us/
 // @include      http://*.psim.us/*
 // @include      https://*.psim.us/*
-// @version      0.0.3
+// @version      0.0.4
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
@@ -20,6 +20,8 @@
 
     var lastOwnPokemon = null;
     var lastOppPokemon = null;
+
+    var running = false;
 
     var runningHandlerId = null;
 
@@ -50,6 +52,10 @@
 
     function handleDamageCalcs() {
         // Cycle stop conditions
+        if (!running) {
+            return;
+        }
+
         if (runningHandlerId !== null && runningHandlerId !== currentId) {
             runningHandlerId = currentId;
             return;
@@ -69,7 +75,7 @@
                     lastOwnPokemon = currentOwnPokemon;
                     lastOppPokemon = currentOppPokemon;
 
-                    var calcs = '<iframe style="width: 100%; height: 30em;" sandbox="allow-same-origin allow-scripts allow-forms" src="https://fulllifegames.com/Tools/CalcApi/?ownPokemon=' + currentOwnPokemon + '&oppPokemon=' + currentOppPokemon + '&tier=' + currentTier + '" />';
+                    var calcs = '<iframe class="calcIframe" style="width: 100%; height: 30em;" sandbox="allow-same-origin allow-scripts allow-forms" src="https://fulllifegames.com/Tools/CalcApi/?ownPokemon=' + currentOwnPokemon + '&oppPokemon=' + currentOppPokemon + '&tier=' + currentTier + '" />';
                     $(currentClickedBattleOptions).closest(".battle-log").children(".inner.message-log").append($('<div class="chat calc" style="white-space: pre-line">' + calcs + '</div>'));
                 }
             }
@@ -150,7 +156,13 @@
             $('.battleHelperDump').html(data);
         });
 
+        running = true;
+
         setTimeout(handleDamageCalcs, 100);
+    }
+
+    function triggerBattleHelpOff() {
+        running = false;
     }
 
     function addOption() {
@@ -160,7 +172,13 @@
             click: triggerBattleHelp,
             style: 'margin-left: 5px;',
         });
+        var battleHelperButtonOff = $('<button/>', {
+            text: 'Battle Helper Off',
+            click: triggerBattleHelpOff,
+            style: 'margin-left: 5px;',
+        });
         $('.ps-popup p:last-child').append(battleHelperButton);
+        $('.ps-popup p:last-child').append(battleHelperButtonOff);
     }
 
     function triggerOptionAddition() {
