@@ -1,3 +1,5 @@
+import { copyFile } from "fs"
+
 const { cd, exec, echo, touch } = require("shelljs")
 const { readFileSync } = require("fs")
 const url = require("url")
@@ -19,6 +21,7 @@ let ghToken = process.env.GH_TOKEN
 
 echo("Deploying docs!!!")
 cd("docs")
+exec("cp -r ../images ./")
 touch(".nojekyll")
 exec("git init")
 exec("git add .")
