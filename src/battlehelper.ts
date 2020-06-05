@@ -123,7 +123,6 @@
     let tier = id.substr(0, id.lastIndexOf('-'));
     tier = tier.substr(tier.lastIndexOf('-') + 1);
 
-    currentGen = tier[3];
     currentTier = tier;
 
     const teamIcons = $(psRoom.find('.battle > div > div.rightbar > div > .teamicons'));
