@@ -1,4 +1,6 @@
 # BattleHelper
+[![Build Status](https://travis-ci.org/FullLifeGames/BattleHelper.svg?branch=master)](https://travis-ci.org/FullLifeGames/BattleHelper)
+
 This repository provides the code for a Pokémon Showdown Battle helper tool which can analyze replays, look at all teams posted on Smogon and performs damage calcs on every new matchup!
 
 This project is in a **Beta** phase, so use it with the knowledge that it might break!
@@ -8,11 +10,10 @@ Any issue or merge request is appreciated.
 ## Installation
 
 1) Install the Tampermonkey addon here: [Tampermonkey Homepage](https://www.tampermonkey.net/index.php?ext=dhdg)
-2) Select the [battleHelper.js](battleHelper.js) file in this repo 
-3) View the file and click the `Raw` button at the top of the file to view its source
-4) Copy the source
-5) Open Tampermonkey in your browser and click the `Add Script` tab (icon with a plus symbol)
-6) Paste the source into the script window and hit save
+2) Select the `battleHelper.js` file in this repo found under [Releases](https://github.com/FullLifeGames/BattleHelper/releases)
+3) Copy the source
+4) Open Tampermonkey in your browser and click the `Add Script` tab (icon with a plus symbol)
+5) Paste the source into the script window and hit save
 
 ## Usage
 
