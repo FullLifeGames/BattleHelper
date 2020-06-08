@@ -11,7 +11,7 @@
 // @include      https://*.psim.us/
 // @include      http://*.psim.us/*
 // @include      https://*.psim.us/*
-// @version      0.1.0
+// @version      1.0.0
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
@@ -117,6 +117,7 @@
 
     const id = psRoom.attr('id') as string;
     currentId = id;
+    runningHandlerId = currentId;
 
     const oppName = $(psRoom.find('.battle div > div.rightbar > div > strong')[0]).html();
 
