@@ -11,7 +11,7 @@
 // @include      https://*.psim.us/
 // @include      http://*.psim.us/*
 // @include      https://*.psim.us/*
-// @version      1.0.0
+// @version      1.1.0
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
@@ -19,6 +19,25 @@
 (function () {
   let lastOwnPokemon: string;
   let lastOppPokemon: string;
+  let lastWeatherStatus: string | null;
+  let lastTerrainStatus: string | null;
+
+  const weatherMapping = {
+    'sunnyday': 'Sun', 
+    'raindance': 'Rain',
+    'sandstorm': 'Sand',
+    'hail': 'Hail', 
+    'harshsunshine': 'Harsh Sunshine', 
+    'heavyrain': 'Heavy Rain', 
+    'strongwinds': 'Strong Winds',
+  };
+
+  const terrainMapping = {
+    'grassyterrain': 'Grassy', 
+    'psychicterrain': 'Psychic', 
+    'electricterrain': 'Electric', 
+    'mistyterrain': 'Misty',
+  };
 
   let running = false;
 
@@ -31,6 +50,16 @@
 
   function currentIdExists() {
     return $('#' + currentId).length > 0;
+  }
+
+  function getActiveWeatherStats(psRoom: JQuery<HTMLElement>, weather: Array<string>): string | null {
+    for (let index = 0; index < weather.length; index++) {
+      const element = weather[index];
+      if (psRoom.find('.' + element + 'weather').length > 0) {
+        return element;
+      }
+    }
+    return null;
   }
 
   function getActivePokemon(littleImages: JQuery<HTMLElement>): string | null {
@@ -65,19 +94,31 @@
 
     const psRoom = $(currentClickedBattleOptions).closest('.ps-room');
 
+    const currentWeatherStatus = getActiveWeatherStats(psRoom, Object.keys(weatherMapping));
+    const currentTerrainStatus = getActiveWeatherStats(psRoom, Object.keys(terrainMapping));
+
     const currentOwnPokemon = getActivePokemon($(psRoom.find('.leftbar .picon.has-tooltip')));
     if (currentOwnPokemon !== null) {
       const currentOppPokemon = getActivePokemon($(psRoom.find('.rightbar .picon.has-tooltip')));
       if (currentOppPokemon !== null) {
-        if (currentOwnPokemon !== lastOwnPokemon || currentOppPokemon !== lastOppPokemon) {
+        if (currentOwnPokemon !== lastOwnPokemon 
+          || currentOppPokemon !== lastOppPokemon
+          || currentWeatherStatus !== lastWeatherStatus
+          || currentTerrainStatus !== lastTerrainStatus) {
           lastOwnPokemon = currentOwnPokemon;
           lastOppPokemon = currentOppPokemon;
+          lastWeatherStatus = currentWeatherStatus;
+          lastTerrainStatus = currentTerrainStatus;
 
           const calcs =
             '<iframe class="calcIframe" style="width: 100%; height: 30em;" sandbox="allow-same-origin allow-scripts allow-forms" src="https://fulllifegames.com/Tools/CalcApi/?ownPokemon=' +
             currentOwnPokemon +
             '&oppPokemon=' +
             currentOppPokemon +
+            '&weather=' +
+            (currentWeatherStatus !== null ? (weatherMapping as any)[currentWeatherStatus] : null) +
+            '&terrain=' +
+            (currentTerrainStatus !== null ? (terrainMapping as any)[currentTerrainStatus] : null) +
             '&tier=' +
             currentTier +
             '" />';
@@ -89,7 +130,7 @@
       }
     }
     // check if new damagecalcs are needed
-    setTimeout(handleDamageCalcs, 100);
+    setTimeout(handleDamageCalcs, 500);
   }
 
   function triggerBattleHelp() {
