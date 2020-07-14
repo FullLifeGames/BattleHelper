@@ -23,20 +23,20 @@
   let lastTerrainStatus: string | null;
 
   const weatherMapping = {
-    'sunnyday': 'Sun', 
-    'raindance': 'Rain',
-    'sandstorm': 'Sand',
-    'hail': 'Hail', 
-    'harshsunshine': 'Harsh Sunshine', 
-    'heavyrain': 'Heavy Rain', 
-    'strongwinds': 'Strong Winds',
+    sunnyday: 'Sun',
+    raindance: 'Rain',
+    sandstorm: 'Sand',
+    hail: 'Hail',
+    harshsunshine: 'Harsh Sunshine',
+    heavyrain: 'Heavy Rain',
+    strongwinds: 'Strong Winds',
   };
 
   const terrainMapping = {
-    'grassyterrain': 'Grassy', 
-    'psychicterrain': 'Psychic', 
-    'electricterrain': 'Electric', 
-    'mistyterrain': 'Misty',
+    grassyterrain: 'Grassy',
+    psychicterrain: 'Psychic',
+    electricterrain: 'Electric',
+    mistyterrain: 'Misty',
   };
 
   let running = false;
@@ -52,7 +52,10 @@
     return $('#' + currentId).length > 0;
   }
 
-  function getActiveWeatherStats(psRoom: JQuery<HTMLElement>, weather: Array<string>): string | null {
+  function getActiveWeatherStats(
+    psRoom: JQuery<HTMLElement>,
+    weather: Array<string>
+  ): string | null {
     for (let index = 0; index < weather.length; index++) {
       const element = weather[index];
       if (psRoom.find('.' + element + 'weather').length > 0) {
@@ -101,10 +104,12 @@
     if (currentOwnPokemon !== null) {
       const currentOppPokemon = getActivePokemon($(psRoom.find('.rightbar .picon.has-tooltip')));
       if (currentOppPokemon !== null) {
-        if (currentOwnPokemon !== lastOwnPokemon 
-          || currentOppPokemon !== lastOppPokemon
-          || currentWeatherStatus !== lastWeatherStatus
-          || currentTerrainStatus !== lastTerrainStatus) {
+        if (
+          currentOwnPokemon !== lastOwnPokemon ||
+          currentOppPokemon !== lastOppPokemon ||
+          currentWeatherStatus !== lastWeatherStatus ||
+          currentTerrainStatus !== lastTerrainStatus
+        ) {
           lastOwnPokemon = currentOwnPokemon;
           lastOppPokemon = currentOppPokemon;
           lastWeatherStatus = currentWeatherStatus;
