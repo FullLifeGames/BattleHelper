@@ -10,8 +10,9 @@ Any issue or merge request is appreciated.
 ## Installation
 
 1) Install the Tampermonkey addon here: [Tampermonkey Homepage](https://www.tampermonkey.net/index.php?ext=dhdg)
-2) Select the `battleHelper.js` file in this repo found under [Releases](https://github.com/FullLifeGames/BattleHelper/releases)
-3) Copy the source
+2) Select the `BattleHelper` asset in this repo found under [Releases](https://github.com/FullLifeGames/BattleHelper/releases)
+   * This contains the `battlehelper.js` which contains the source code needed
+3) Open the `battlehelper.js` with an editor and copy the source code
 4) Open Tampermonkey in your browser and click the `Add Script` tab (icon with a plus symbol)
 5) Paste the source into the script window and hit save
 
