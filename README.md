@@ -1,7 +1,8 @@
-# BattleHelper
+# Pokémon Showdown Battle Helper
+
 [![Build Status](https://travis-ci.org/FullLifeGames/BattleHelper.svg?branch=master)](https://travis-ci.org/FullLifeGames/BattleHelper)
 
-This repository provides the code for a Pokémon Showdown Battle helper tool which can analyze replays, look at all teams posted on Smogon and performs damage calcs on every new matchup!
+This repository provides the code for a Pokémon Showdown Battle helper tool which can analyze replays, look at all teams posted on Smogon and ~~performs damage calcs on every new matchup~~ (use [Showdex](https://www.smogon.com/forums/threads/showdex-an-auto-updating-damage-calculator-built-into-showdown.3707265/)!
 
 This project is in a **Beta** phase, so use it with the knowledge that it might break!
 
@@ -15,6 +16,26 @@ Any issue or merge request is appreciated.
 3) Open the `battlehelper.js` with an editor and copy the source code
 4) Open Tampermonkey in your browser and click the `Add Script` tab (icon with a plus symbol)
 5) Paste the source into the script window and hit save
+
+## Commands
+
+### Install
+
+```sh
+pnpm install
+```
+
+### Build
+
+```sh
+pnpm build
+```
+
+### Lint
+
+```sh
+pnpm lint
+```
 
 ## Usage
 
@@ -33,10 +54,6 @@ The SmogonDump in action:
 The ReplayScouter in action:
 
 ![ReplayScouter Demonstration](images/ReplayScouter.png)
-
-The DamageCalc in action:
-
-![DamageCalc Demonstration](images/DamageCalc.png)
 
 ## Feedback
 

@@ -5,15 +5,13 @@ import camelCase from 'lodash.camelcase'
 import typescript from 'rollup-plugin-typescript2'
 import json from '@rollup/plugin-json'
 
-const pkg = require('./package.json')
-
 const libraryName = 'battlehelper'
 
 export default {
   input: `src/${libraryName}.ts`,
   output: [
-    { file: pkg.main, name: camelCase(libraryName), format: 'umd', sourcemap: true },
-    { file: pkg.module, format: 'es', sourcemap: true },
+    { file: "dist/battlehelper.umd.js", name: camelCase(libraryName), format: 'umd', sourcemap: true },
+    { file: "dist/battlehelper.es5.js", format: 'es', sourcemap: true },
   ],
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
   external: [],
