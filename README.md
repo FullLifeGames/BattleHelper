@@ -1,7 +1,5 @@
 # Pokémon Showdown Battle Helper
 
-[![Build Status](https://travis-ci.org/FullLifeGames/BattleHelper.svg?branch=master)](https://travis-ci.org/FullLifeGames/BattleHelper)
-
 This repository provides the code for a Pokémon Showdown Battle helper tool which can analyze replays, look at all teams posted on Smogon and ~~performs damage calcs on every new matchup~~ (use [Showdex](https://www.smogon.com/forums/threads/showdex-an-auto-updating-damage-calculator-built-into-showdown.3707265/)!
 
 This project is in a **Beta** phase, so use it with the knowledge that it might break!
@@ -41,10 +39,6 @@ pnpm lint
 
 When in a battle, click on the `Battle Options` button and then on the `Battle Helper` option.
 
-## Custom Sets
-
-If you want to include your custom sets in the damage calc, visit [my calc copy site](https://fulllifegames.com/Tools/Calc/) and include your sets there!
-
 ## Examples
 
 The SmogonDump in action:
@@ -57,5 +51,4 @@ The ReplayScouter in action:
 
 ## Feedback
 
-As previously said, any feedback or bug report is welcomed in the [Issues](https://github.com/FullLifeGames/BattleHelper/issues) tab.   
-Currently the UI for the Calc Api window is something I want to work on, so any comments on that would be appreciated.
+As previously said, any feedback or bug report is welcomed in the [Issues](https://github.com/FullLifeGames/BattleHelper/issues) tab.
